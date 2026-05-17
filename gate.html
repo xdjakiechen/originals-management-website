@@ -103,15 +103,16 @@
   </div>
 
   <script>
-    // Check if already authenticated
-    if (sessionStorage.getItem('om_auth') === '1') {
+    const EXPIRY_MS = 24 * 60 * 60 * 1000; // 24 hours
+    const ts = localStorage.getItem('om_auth_ts');
+    if (ts && Date.now() - Number(ts) < EXPIRY_MS) {
       location.replace('preview.html');
     }
 
     function checkPw() {
       const val = document.getElementById('pw').value;
       if (val === 'om2026') {
-        sessionStorage.setItem('om_auth', '1');
+        localStorage.setItem('om_auth_ts', Date.now());
         location.replace('preview.html');
       } else {
         document.getElementById('err').classList.add('show');
