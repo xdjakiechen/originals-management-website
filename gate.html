@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Originals Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #eaecf2;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        repeating-linear-gradient(-52deg, transparent, transparent 40px, rgba(20,45,110,0.07) 40px, rgba(20,45,110,0.07) 42px),
+        repeating-linear-gradient(-52deg, transparent, transparent 90px, rgba(20,45,110,0.04) 90px, rgba(20,45,110,0.04) 93px);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse 78% 68% at 50% 40%, rgba(255,255,255,0.78) 0%, transparent 62%);
+      pointer-events: none; z-index: 0;
+    }
+    .wrap {
+      position: relative; z-index: 1;
+      height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 32px;
+    }
+    .logo { width: 320px; max-width: 80vw; }
+    .card {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(26,53,100,0.1);
+      border-radius: 16px;
+      padding: 36px 40px;
+      width: 340px; max-width: 90vw;
+      box-shadow: 0 4px 24px rgba(26,53,100,0.08);
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #4a5a78;
+    }
+    .input-wrap { position: relative; margin-top: 6px; }
+    input[type="password"] {
+      width: 100%; padding: 11px 44px 11px 14px;
+      border: 1.5px solid rgba(26,53,100,0.2);
+      border-radius: 9px;
+      font-family: inherit; font-size: 15px;
+      color: #1a2035; background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="password"]:focus { border-color: #1a5dc8; }
+    .toggle-eye {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      cursor: pointer; color: #9aabca; background: none; border: none; padding: 0;
+      display: flex; align-items: center;
+    }
+    .toggle-eye:hover { color: #1a5dc8; }
+    .error {
+      font-size: 12px; color: #c0392b;
+      display: none; margin-top: -8px;
+    }
+    .error.show { display: block; }
+    button[type="submit"] {
+      width: 100%; padding: 12px;
+      background: #1a3564; color: #fff;
+      border: none; border-radius: 9px;
+      font-family: inherit; font-size: 14px; font-weight: 600;
+      cursor: pointer; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    button[type="submit"]:hover { background: #1a5dc8; transform: translateY(-1px); }
+    button[type="submit"]:active { transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="logo" src="logo.png" alt="Originals Management" />
+    <div class="card">
+      <label for="pw">Password</label>
+      <div class="input-wrap">
+        <input type="password" id="pw" placeholder="Enter password" autofocus />
+        <button type="button" class="toggle-eye" onclick="togglePw()" aria-label="Show/hide password">
+          <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <p class="error" id="err">Incorrect password. Please try again.</p>
+      <button type="submit" onclick="checkPw()">Enter</button>
+    </div>
+  </div>
+
+  <script>
+    // Check if already authenticated
+    if (sessionStorage.getItem('om_auth') === '1') {
+      location.replace('preview.html');
+    }
+
+    function checkPw() {
+      const val = document.getElementById('pw').value;
+      if (val === 'admin') {
+        sessionStorage.setItem('om_auth', '1');
+        location.replace('preview.html');
+      } else {
+        document.getElementById('err').classList.add('show');
+        document.getElementById('pw').value = '';
+        document.getElementById('pw').focus();
+      }
+    }
+
+    document.getElementById('pw').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPw();
+    });
+
+    function togglePw() {
+      const input = document.getElementById('pw');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+  </script>
+</body>
+</html>
