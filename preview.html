@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Originals Management — Theme Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #f4f5f9;
+      color: #1a2035;
+      min-height: 100vh;
+      padding: 60px 24px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    header img {
+      width: 260px;
+      max-width: 80vw;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    header h1 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #4a5a78;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid rgba(26,53,100,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(26,53,100,0.12);
+      transform: translateY(-3px);
+    }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #e8eaf0;
+    }
+    .card-body {
+      padding: 18px 20px 20px;
+    }
+    .card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3b6fd4;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a2035;
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #7a8ba8;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 11px;
+      color: #a0aec0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Originals Management" />
+    <h1>Website Theme Preview</h1>
+  </header>
+
+  <div class="grid">
+    <a href="index.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Current</div>
+        <div class="card-title">Main Site</div>
+        <div class="card-desc">浅银蓝底色 + 多层斜线纹理，当前主方案</div>
+      </div>
+    </a>
+
+    <a href="theme-01-diagonal-stripes.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 01 · Light</div>
+        <div class="card-title">Diagonal Stripes</div>
+        <div class="card-desc">经典平行斜线纹理，参考 avantyrcapital.com 风格，四角深中间亮</div>
+      </div>
+    </a>
+
+    <a href="theme-02-diamond-grid.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 02 · Light</div>
+        <div class="card-title">Diamond Grid</div>
+        <div class="card-desc">±45° 交叉菱形网格，呼应公司 logo 旋转方块元素</div>
+      </div>
+    </a>
+
+    <a href="theme-03-minimal-gradient.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 03 · Light</div>
+        <div class="card-title">Minimal Gradient</div>
+        <div class="card-desc">蓝白渐变 + 点阵纹理，极简主义，最干净</div>
+      </div>
+    </a>
+
+    <a href="theme-scattered-squares.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 04 · Light</div>
+        <div class="card-title">Scattered Squares</div>
+        <div class="card-desc">散落旋转半透明方块，与品牌 logo 图形元素高度呼应</div>
+      </div>
+    </a>
+
+    <a href="theme-dark-01-diagonal-stripes.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 01 · Dark</div>
+        <div class="card-title">Dark Diagonal Stripes</div>
+        <div class="card-desc">深海军蓝底 + 斜线纹理，logo 白色背景自然浮出</div>
+      </div>
+    </a>
+
+    <a href="theme-dark-02-diamond-grid.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 02 · Dark</div>
+        <div class="card-title">Dark Diamond Grid</div>
+        <div class="card-desc">深黑蓝底 + 菱形交叉网格，最具科技感</div>
+      </div>
+    </a>
+
+    <a href="theme-dark-03-minimal-gradient.html" class="card">
+      <div class="card-body">
+        <div class="card-label">Theme 03 · Dark</div>
+        <div class="card-title">Dark Minimal Gradient</div>
+        <div class="card-desc">径向深蓝渐变 + 点阵，最沉稳高端</div>
+      </div>
+    </a>
+  </div>
+
+  <footer>© 2026 Originals Management · Internal Preview</footer>
+</body>
+</html>

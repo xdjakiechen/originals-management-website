@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Originals Management — Scattered Squares</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      min-height: 100vh;
+      background-color: #f8f9fd;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      color: #1a2035;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Full-screen SVG background — scattered rotated squares */
+    .bg-svg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Fade animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim-logo       { animation: fadeUp 0.5s ease both; animation-delay: 0.5s; }
+    .anim-linkedin   { animation: fadeUp 0.5s ease both; animation-delay: 0.7s; }
+    .anim-email      { animation: fadeUp 0.5s ease both; animation-delay: 0.8s; }
+    .anim-copyright  { animation: fadeUp 0.5s ease both; animation-delay: 0.9s; }
+    .anim-disclaimer { animation: fadeUp 0.5s ease both; animation-delay: 1.0s; }
+
+    .page-content {
+      position: relative; z-index: 1;
+      width: 100%; flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 24px 40px;
+    }
+
+    .logo-wrapper { margin-bottom: 40px; }
+    .logo-wrapper img { width: 520px; max-width: 80vw; display: block; }
+
+    .social-icons { display: flex; gap: 32px; align-items: center; justify-content: center; }
+
+    .social-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px;
+      border: 1.5px solid rgba(26, 53, 100, 0.3);
+      border-radius: 10px;
+      text-decoration: none; color: #1a3564;
+      background-color: transparent;
+      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    }
+    .social-btn:hover {
+      border-color: #3b6fd4;
+      background-color: rgba(59, 111, 212, 0.07);
+      transform: translateY(-2px);
+    }
+    .social-btn svg { width: 22px; height: 22px; fill: currentColor; }
+
+    footer {
+      position: relative; z-index: 1;
+      width: 100%; padding: 24px 24px 32px; text-align: center;
+    }
+    .footer-copyright {
+      font-size: 13px; font-weight: 400; color: #4a5a78;
+      letter-spacing: 0.01em; margin-bottom: 8px;
+    }
+    .footer-links { font-size: 13px; font-weight: 400; color: #4a5a78; margin-bottom: 10px; }
+    .footer-links a { color: #4a5a78; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #3b6fd4; }
+    .footer-links .divider { margin: 0 10px; opacity: 0.5; }
+    .footer-disclaimer {
+      font-size: 11px; font-weight: 400; color: #7a8ba8;
+      max-width: 640px; margin: 0 auto; line-height: 1.65;
+    }
+
+    @media (max-width: 480px) {
+      .logo-wrapper img { width: 300px; }
+      .social-btn { width: 46px; height: 46px; }
+      .social-btn svg { width: 19px; height: 19px; }
+      .footer-disclaimer { font-size: 9.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scattered squares background — SVG with viewBox 1440x900 scaled to fill -->
+  <svg class="bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <style>
+        .sq-fill-light  { fill: rgba(180,200,240,0.10); }
+        .sq-fill-mid    { fill: rgba(140,165,220,0.13); }
+        .sq-fill-strong { fill: rgba(100,130,210,0.18); }
+        .sq-stroke      { fill: none; stroke: rgba(140,170,230,0.22); stroke-width: 1.2; }
+      </style>
+    </defs>
+
+    <!-- ── TOP-LEFT cluster ── -->
+    <rect class="sq-fill-light"  x="-60"  y="-40"  width="340" height="340" rx="6" transform="rotate(-18 110 130)" />
+    <rect class="sq-fill-mid"    x="60"   y="30"   width="200" height="200" rx="4" transform="rotate(12 160 130)" />
+    <rect class="sq-fill-strong" x="120"  y="80"   width="95"  height="95"  rx="3" transform="rotate(-6 168 128)" />
+    <rect class="sq-stroke"      x="20"   y="180"  width="130" height="130" rx="2" transform="rotate(30 85 245)" />
+
+    <!-- ── TOP-CENTER ── -->
+    <rect class="sq-fill-light"  x="400"  y="-80"  width="220" height="220" rx="5" transform="rotate(10 510 30)" />
+    <rect class="sq-fill-mid"    x="560"  y="-30"  width="130" height="130" rx="3" transform="rotate(-15 625 35)" />
+    <rect class="sq-fill-strong" x="700"  y="20"   width="70"  height="70"  rx="2" transform="rotate(25 735 55)" />
+
+    <!-- ── TOP-RIGHT cluster ── -->
+    <rect class="sq-fill-light"  x="1050" y="-70"  width="300" height="300" rx="6" transform="rotate(15 1200 80)" />
+    <rect class="sq-fill-mid"    x="1180" y="30"   width="175" height="175" rx="4" transform="rotate(-10 1268 118)" />
+    <rect class="sq-fill-strong" x="1260" y="110"  width="80"  height="80"  rx="3" transform="rotate(22 1300 150)" />
+    <rect class="sq-stroke"      x="1090" y="140"  width="120" height="120" rx="2" transform="rotate(45 1150 200)" />
+    <rect class="sq-fill-mid"    x="950"  y="60"   width="100" height="100" rx="3" transform="rotate(-20 1000 110)" />
+
+    <!-- ── MID-LEFT ── -->
+    <rect class="sq-fill-light"  x="-80"  y="320"  width="280" height="280" rx="6" transform="rotate(8 60 460)" />
+    <rect class="sq-fill-mid"    x="30"   y="380"  width="160" height="160" rx="4" transform="rotate(-14 110 460)" />
+    <rect class="sq-fill-strong" x="100"  y="460"  width="75"  height="75"  rx="3" transform="rotate(18 138 498)" />
+    <rect class="sq-stroke"      x="240"  y="300"  width="110" height="110" rx="2" transform="rotate(-8 295 355)" />
+
+    <!-- ── MID-CENTER ── -->
+    <rect class="sq-fill-light"  x="480"  y="310"  width="180" height="180" rx="5" transform="rotate(12 570 400)" />
+    <rect class="sq-stroke"      x="560"  y="270"  width="300" height="300" rx="4" transform="rotate(45 710 420)" />
+    <rect class="sq-fill-mid"    x="650"  y="360"  width="90"  height="90"  rx="3" transform="rotate(-18 695 405)" />
+    <rect class="sq-fill-strong" x="740"  y="430"  width="50"  height="50"  rx="2" transform="rotate(30 765 455)" />
+    <rect class="sq-fill-light"  x="820"  y="290"  width="150" height="150" rx="4" transform="rotate(-10 895 365)" />
+
+    <!-- ── MID-RIGHT ── -->
+    <rect class="sq-fill-light"  x="1160" y="280"  width="310" height="310" rx="6" transform="rotate(-12 1315 435)" />
+    <rect class="sq-fill-mid"    x="1200" y="340"  width="170" height="170" rx="4" transform="rotate(18 1285 425)" />
+    <rect class="sq-fill-strong" x="1310" y="420"  width="75"  height="75"  rx="3" transform="rotate(-5 1348 458)" />
+    <rect class="sq-stroke"      x="1050" y="380"  width="120" height="120" rx="2" transform="rotate(20 1110 440)" />
+
+    <!-- ── BOTTOM-LEFT ── -->
+    <rect class="sq-fill-light"  x="-40"  y="620"  width="320" height="320" rx="6" transform="rotate(-10 120 780)" />
+    <rect class="sq-fill-mid"    x="80"   y="700"  width="165" height="165" rx="4" transform="rotate(16 163 783)" />
+    <rect class="sq-fill-strong" x="150"  y="800"  width="80"  height="80"  rx="3" transform="rotate(-8 190 840)" />
+    <rect class="sq-stroke"      x="280"  y="660"  width="115" height="115" rx="2" transform="rotate(25 338 718)" />
+
+    <!-- ── BOTTOM-CENTER ── -->
+    <rect class="sq-fill-light"  x="430"  y="700"  width="200" height="200" rx="5" transform="rotate(-14 530 800)" />
+    <rect class="sq-fill-mid"    x="560"  y="770"  width="110" height="110" rx="3" transform="rotate(20 615 825)" />
+    <rect class="sq-fill-strong" x="680"  y="830"  width="60"  height="60"  rx="2" transform="rotate(-10 710 860)" />
+
+    <!-- ── BOTTOM-RIGHT ── -->
+    <rect class="sq-fill-light"  x="800"  y="650"  width="260" height="260" rx="6" transform="rotate(12 930 780)" />
+    <rect class="sq-fill-mid"    x="900"  y="720"  width="140" height="140" rx="4" transform="rotate(-18 970 790)" />
+    <rect class="sq-fill-strong" x="1060" y="790"  width="70"  height="70"  rx="3" transform="rotate(30 1095 825)" />
+    <rect class="sq-fill-strong" x="1340" y="760"  width="90"  height="90"  rx="3" transform="rotate(-12 1385 805)" />
+    <rect class="sq-stroke"      x="1200" y="700"  width="125" height="125" rx="2" transform="rotate(15 1263 763)" />
+
+    <!-- Thin crossing accent lines -->
+    <line x1="0"    y1="460" x2="480"  y2="380" stroke="rgba(160,185,235,0.2)" stroke-width="1"/>
+    <line x1="960"  y1="520" x2="1440" y2="610" stroke="rgba(160,185,235,0.2)" stroke-width="1"/>
+    <line x1="200"  y1="900" x2="700"  y2="550" stroke="rgba(160,185,235,0.18)" stroke-width="1"/>
+    <line x1="750"  y1="0"   x2="1200" y2="480" stroke="rgba(160,185,235,0.15)" stroke-width="1"/>
+  </svg>
+
+  <div class="page-content">
+    <div class="logo-wrapper anim-logo">
+      <img src="logo.png" alt="Originals Management" />
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-btn anim-linkedin" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:#" class="social-btn anim-email" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-copyright anim-copyright">© 2026 Originals Management. All Rights Reserved.</p>
+    <p class="footer-links anim-copyright">
+      <a href="#">Privacy Notice</a><span class="divider">|</span><a href="#">Terms of Use</a>
+    </p>
+    <p class="footer-disclaimer anim-disclaimer">
+      Originals Management maintains a single website. Any representations to the contrary and any other websites are not endorsed by Originals Management.
+    </p>
+  </footer>
+
+</body>
+</html>
