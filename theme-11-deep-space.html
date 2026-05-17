@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var ts=localStorage.getItem("om_auth_ts");if(!ts||Date.now()-Number(ts)>=86400000){location.replace("gate.html")}})()</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Originals Management — Theme 11: Deep Space Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      min-height: 100vh;
+      background-color: #05080f;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      color: #b0c4e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Nebula overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(10,30,100,0.4) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Full-screen star field SVG */
+    .starfield {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim-logo       { animation: fadeUp 0.7s ease both; animation-delay: 0.4s; }
+    .anim-tagline    { animation: fadeUp 0.7s ease both; animation-delay: 0.65s; }
+    .anim-divider    { animation: fadeUp 0.5s ease both; animation-delay: 0.8s; }
+    .anim-social     { animation: fadeUp 0.6s ease both; animation-delay: 0.9s; }
+    .anim-copyright  { animation: fadeUp 0.5s ease both; animation-delay: 1.05s; }
+    .anim-disclaimer { animation: fadeUp 0.5s ease both; animation-delay: 1.15s; }
+
+    .page-content {
+      position: relative; z-index: 1;
+      width: 100%; flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 24px 40px;
+      gap: 0;
+    }
+
+    /* Logo card */
+    .logo-wrapper {
+      margin-bottom: 36px;
+    }
+    .logo-wrapper img {
+      width: 460px;
+      max-width: 82vw;
+      display: block;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow:
+        0 0 40px rgba(30,80,200,0.2),
+        0 0 0 1px rgba(100,150,255,0.1);
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 13.5px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      color: #6080a8;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* Divider */
+    .divider-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(80,120,200,0.4);
+      margin-bottom: 32px;
+    }
+
+    /* Social icons */
+    .social-icons {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      border: 1px solid rgba(100,130,220,0.35);
+      border-radius: 50%;
+      text-decoration: none;
+      color: #8aaad4;
+      background-color: transparent;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    }
+    .social-btn:hover {
+      border-color: rgba(80,140,255,0.7);
+      color: #c0d8ff;
+      box-shadow: 0 0 12px rgba(80,140,255,0.3);
+      transform: translateY(-2px);
+    }
+    .social-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Footer */
+    footer {
+      position: relative; z-index: 1;
+      width: 100%; padding: 20px 24px 30px; text-align: center;
+    }
+    .footer-copyright {
+      font-size: 12.5px; font-weight: 400; color: #4a5e80;
+      letter-spacing: 0.02em; margin-bottom: 7px;
+    }
+    .footer-links {
+      font-size: 12.5px; font-weight: 400; color: #4a5e80; margin-bottom: 9px;
+    }
+    .footer-links a { color: #4a5e80; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #8aaad4; }
+    .footer-links .sep { margin: 0 10px; opacity: 0.45; }
+    .footer-disclaimer {
+      font-size: 10.5px; font-weight: 400; color: #2a3a58;
+      max-width: 640px; margin: 0 auto; line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+      .logo-wrapper img { width: 300px; }
+      .tagline { font-size: 11px; letter-spacing: 0.15em; }
+      .social-btn { width: 44px; height: 44px; }
+      .social-btn svg { width: 18px; height: 18px; }
+      .footer-disclaimer { font-size: 9.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Star field SVG -->
+  <svg class="starfield" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Orbital arcs (data flow traces) -->
+    <path d="M-100,600 Q400,100 900,500 T1600,300" stroke="rgba(80,140,255,0.08)" stroke-width="1" fill="none"/>
+    <path d="M200,900 Q600,200 1100,700 T1500,100" stroke="rgba(80,140,255,0.06)" stroke-width="0.8" fill="none"/>
+    <path d="M-50,200 Q500,600 1000,150 T1500,600" stroke="rgba(60,120,240,0.05)" stroke-width="0.8" fill="none"/>
+
+    <!-- Planetary orbit circles (stroke only, very faint) -->
+    <circle cx="720" cy="350" r="320" stroke="rgba(60,100,200,0.04)" stroke-width="1" fill="none"/>
+    <circle cx="720" cy="350" r="480" stroke="rgba(60,100,200,0.03)" stroke-width="0.8" fill="none"/>
+
+    <!-- Brighter accent stars (r=1.5 to 2) -->
+    <circle cx="87"  cy="42"  r="1.8" fill="rgba(200,220,255,0.75)"/>
+    <circle cx="214" cy="108" r="1.6" fill="rgba(200,220,255,0.70)"/>
+    <circle cx="356" cy="67"  r="2.0" fill="rgba(200,220,255,0.80)"/>
+    <circle cx="498" cy="153" r="1.5" fill="rgba(200,220,255,0.65)"/>
+    <circle cx="631" cy="39"  r="1.7" fill="rgba(200,220,255,0.72)"/>
+    <circle cx="768" cy="91"  r="1.9" fill="rgba(200,220,255,0.78)"/>
+    <circle cx="912" cy="55"  r="1.6" fill="rgba(200,220,255,0.68)"/>
+    <circle cx="1043" cy="130" r="2.0" fill="rgba(200,220,255,0.82)"/>
+    <circle cx="1178" cy="78" r="1.7" fill="rgba(200,220,255,0.70)"/>
+    <circle cx="1312" cy="44" r="1.5" fill="rgba(200,220,255,0.65)"/>
+    <circle cx="1398" cy="155" r="1.8" fill="rgba(200,220,255,0.73)"/>
+    <circle cx="52"  cy="260" r="1.6" fill="rgba(200,220,255,0.67)"/>
+    <circle cx="190" cy="320" r="2.0" fill="rgba(200,220,255,0.80)"/>
+    <circle cx="445" cy="290" r="1.5" fill="rgba(200,220,255,0.62)"/>
+    <circle cx="987" cy="240" r="1.9" fill="rgba(200,220,255,0.76)"/>
+    <circle cx="1250" cy="310" r="1.6" fill="rgba(200,220,255,0.69)"/>
+    <circle cx="1420" cy="265" r="1.8" fill="rgba(200,220,255,0.74)"/>
+
+    <!-- Regular small stars (r=1 or r=0.8) -->
+    <circle cx="23"  cy="15"  r="1"   fill="rgba(200,220,255,0.40)"/>
+    <circle cx="61"  cy="83"  r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="105" cy="137" r="1"   fill="rgba(200,220,255,0.45)"/>
+    <circle cx="142" cy="58"  r="0.8" fill="rgba(200,220,255,0.38)"/>
+    <circle cx="178" cy="193" r="1"   fill="rgba(200,220,255,0.42)"/>
+    <circle cx="227" cy="22"  r="0.8" fill="rgba(200,220,255,0.33)"/>
+    <circle cx="263" cy="165" r="1"   fill="rgba(200,220,255,0.48)"/>
+    <circle cx="299" cy="88"  r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="334" cy="210" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="372" cy="143" r="0.8" fill="rgba(200,220,255,0.37)"/>
+    <circle cx="407" cy="31"  r="1"   fill="rgba(200,220,255,0.50)"/>
+    <circle cx="441" cy="187" r="0.8" fill="rgba(200,220,255,0.34)"/>
+    <circle cx="476" cy="112" r="1"   fill="rgba(200,220,255,0.46)"/>
+    <circle cx="519" cy="244" r="0.8" fill="rgba(200,220,255,0.39)"/>
+    <circle cx="555" cy="72"  r="1"   fill="rgba(200,220,255,0.43)"/>
+    <circle cx="587" cy="189" r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="622" cy="118" r="1"   fill="rgba(200,220,255,0.49)"/>
+    <circle cx="658" cy="257" r="0.8" fill="rgba(200,220,255,0.32)"/>
+    <circle cx="693" cy="168" r="1"   fill="rgba(200,220,255,0.47)"/>
+    <circle cx="729" cy="23"  r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="754" cy="197" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="789" cy="134" r="0.8" fill="rgba(200,220,255,0.38)"/>
+    <circle cx="823" cy="268" r="1"   fill="rgba(200,220,255,0.51)"/>
+    <circle cx="857" cy="79"  r="0.8" fill="rgba(200,220,255,0.33)"/>
+    <circle cx="892" cy="201" r="1"   fill="rgba(200,220,255,0.45)"/>
+    <circle cx="928" cy="148" r="0.8" fill="rgba(200,220,255,0.37)"/>
+    <circle cx="964" cy="17"  r="1"   fill="rgba(200,220,255,0.52)"/>
+    <circle cx="999" cy="283" r="0.8" fill="rgba(200,220,255,0.34)"/>
+    <circle cx="1034" cy="96" r="1"   fill="rgba(200,220,255,0.46)"/>
+    <circle cx="1068" cy="213" r="0.8" fill="rgba(200,220,255,0.40)"/>
+    <circle cx="1103" cy="50"  r="1"   fill="rgba(200,220,255,0.48)"/>
+    <circle cx="1138" cy="178" r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="1164" cy="243" r="1"   fill="rgba(200,220,255,0.43)"/>
+    <circle cx="1199" cy="104" r="0.8" fill="rgba(200,220,255,0.38)"/>
+    <circle cx="1234" cy="29"  r="1"   fill="rgba(200,220,255,0.50)"/>
+    <circle cx="1268" cy="189" r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="1291" cy="127" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="1326" cy="256" r="0.8" fill="rgba(200,220,255,0.32)"/>
+    <circle cx="1360" cy="88"  r="1"   fill="rgba(200,220,255,0.47)"/>
+    <circle cx="1385" cy="212" r="0.8" fill="rgba(200,220,255,0.39)"/>
+    <circle cx="1415" cy="46"  r="1"   fill="rgba(200,220,255,0.53)"/>
+    <circle cx="1436" cy="170" r="0.8" fill="rgba(200,220,255,0.34)"/>
+    <!-- Lower half stars -->
+    <circle cx="18"  cy="380" r="1"   fill="rgba(200,220,255,0.40)"/>
+    <circle cx="54"  cy="440" r="0.8" fill="rgba(200,220,255,0.33)"/>
+    <circle cx="93"  cy="510" r="1"   fill="rgba(200,220,255,0.45)"/>
+    <circle cx="133" cy="396" r="0.8" fill="rgba(200,220,255,0.37)"/>
+    <circle cx="167" cy="468" r="1"   fill="rgba(200,220,255,0.42)"/>
+    <circle cx="206" cy="530" r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="244" cy="415" r="1"   fill="rgba(200,220,255,0.48)"/>
+    <circle cx="283" cy="487" r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="320" cy="560" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="361" cy="430" r="0.8" fill="rgba(200,220,255,0.38)"/>
+    <circle cx="399" cy="500" r="1"   fill="rgba(200,220,255,0.50)"/>
+    <circle cx="438" cy="370" r="0.8" fill="rgba(200,220,255,0.34)"/>
+    <circle cx="477" cy="545" r="1"   fill="rgba(200,220,255,0.46)"/>
+    <circle cx="516" cy="462" r="0.8" fill="rgba(200,220,255,0.39)"/>
+    <circle cx="554" cy="390" r="1"   fill="rgba(200,220,255,0.43)"/>
+    <circle cx="590" cy="518" r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="629" cy="445" r="1"   fill="rgba(200,220,255,0.49)"/>
+    <circle cx="667" cy="370" r="0.8" fill="rgba(200,220,255,0.32)"/>
+    <circle cx="703" cy="500" r="1"   fill="rgba(200,220,255,0.47)"/>
+    <circle cx="740" cy="560" r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="778" cy="418" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="816" cy="488" r="0.8" fill="rgba(200,220,255,0.38)"/>
+    <circle cx="851" cy="552" r="1"   fill="rgba(200,220,255,0.51)"/>
+    <circle cx="887" cy="396" r="0.8" fill="rgba(200,220,255,0.33)"/>
+    <circle cx="925" cy="466" r="1"   fill="rgba(200,220,255,0.45)"/>
+    <circle cx="961" cy="540" r="0.8" fill="rgba(200,220,255,0.37)"/>
+    <circle cx="997" cy="380" r="1"   fill="rgba(200,220,255,0.52)"/>
+    <circle cx="1035" cy="450" r="0.8" fill="rgba(200,220,255,0.34)"/>
+    <circle cx="1072" cy="520" r="1"   fill="rgba(200,220,255,0.46)"/>
+    <circle cx="1108" cy="400" r="0.8" fill="rgba(200,220,255,0.40)"/>
+    <circle cx="1145" cy="478" r="1"   fill="rgba(200,220,255,0.48)"/>
+    <circle cx="1183" cy="558" r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="1218" cy="425" r="1"   fill="rgba(200,220,255,0.43)"/>
+    <circle cx="1254" cy="495" r="0.8" fill="rgba(200,220,255,0.38)"/>
+    <circle cx="1291" cy="375" r="1"   fill="rgba(200,220,255,0.50)"/>
+    <circle cx="1327" cy="543" r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="1362" cy="460" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="1399" cy="390" r="0.8" fill="rgba(200,220,255,0.32)"/>
+    <circle cx="1432" cy="530" r="1"   fill="rgba(200,220,255,0.47)"/>
+    <!-- Bottom band stars -->
+    <circle cx="45"  cy="640" r="1"   fill="rgba(200,220,255,0.38)"/>
+    <circle cx="110" cy="700" r="0.8" fill="rgba(200,220,255,0.32)"/>
+    <circle cx="188" cy="658" r="1"   fill="rgba(200,220,255,0.42)"/>
+    <circle cx="265" cy="730" r="0.8" fill="rgba(200,220,255,0.35)"/>
+    <circle cx="342" cy="675" r="1"   fill="rgba(200,220,255,0.46)"/>
+    <circle cx="420" cy="742" r="0.8" fill="rgba(200,220,255,0.30)"/>
+    <circle cx="497" cy="616" r="1"   fill="rgba(200,220,255,0.44)"/>
+    <circle cx="574" cy="788" r="0.8" fill="rgba(200,220,255,0.33)"/>
+    <circle cx="651" cy="648" r="1"   fill="rgba(200,220,255,0.40)"/>
+    <circle cx="728" cy="720" r="0.8" fill="rgba(200,220,255,0.36)"/>
+    <circle cx="806" cy="670" r="1"   fill="rgba(200,220,255,0.48)"/>
+    <circle cx="883" cy="752" r="0.8" fill="rgba(200,220,255,0.31)"/>
+    <circle cx="960" cy="625" r="1"   fill="rgba(200,220,255,0.45)"/>
+    <circle cx="1037" cy="698" r="0.8" fill="rgba(200,220,255,0.37)"/>
+    <circle cx="1114" cy="760" r="1"   fill="rgba(200,220,255,0.43)"/>
+    <circle cx="1192" cy="632" r="0.8" fill="rgba(200,220,255,0.34)"/>
+    <circle cx="1270" cy="714" r="1"   fill="rgba(200,220,255,0.50)"/>
+    <circle cx="1347" cy="665" r="0.8" fill="rgba(200,220,255,0.32)"/>
+    <circle cx="1408" cy="740" r="1"   fill="rgba(200,220,255,0.41)"/>
+  </svg>
+
+  <div class="page-content">
+    <div class="logo-wrapper anim-logo">
+      <img src="logo.png" alt="Originals Management" />
+    </div>
+    <p class="tagline anim-tagline">Beyond the Horizon of Conventional Returns</p>
+    <div class="divider-line anim-divider"></div>
+    <div class="social-icons anim-social">
+      <a href="#" class="social-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:#" class="social-btn" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-copyright anim-copyright">© 2026 Originals Management. All Rights Reserved.</p>
+    <p class="footer-links anim-copyright">
+      <a href="#">Privacy Notice</a><span class="sep">|</span><a href="#">Terms of Use</a>
+    </p>
+    <p class="footer-disclaimer anim-disclaimer">
+      Originals Management maintains a single website. Any representations to the contrary and any other websites are not endorsed by Originals Management.
+    </p>
+  </footer>
+
+</body>
+</html>
