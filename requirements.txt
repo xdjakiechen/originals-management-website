@@ -1,0 +1,6 @@
+Originals-management-website 要求：
+1、需要制作一个 start-up 公司 originals management 公司的网站
+2、视觉样式可以打开“参考的网站.png”，替换其中的 AVANTYR 等 logo 为 20260413 文件夹中的 PNG 图片 Originals Management-01.png
+3、保留其他的元素，包括 linkin、邮箱，底部 copyright 等相关元素，后续可以调整为本公司的元素
+4、打开页面保留淡入效果，具体你可以用playwright打开参考：https://avantyrcapital.com/
+5、背景图案你来设计几种样式提供我参考，每种样式独立命名即可。
