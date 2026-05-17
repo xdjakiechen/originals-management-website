@@ -41,6 +41,7 @@
 
     .header-left img {
       width: 480px;
+      max-width: 45vw;
       height: auto;
     }
 
@@ -181,6 +182,53 @@
     @keyframes fadeUp {
       from {
         opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 64px 1fr auto auto;
+        overflow: auto;
+      }
+      .header-left {
+        padding: 0 24px;
+        border-right: none;
+      }
+      .header-left img { max-width: 60vw; }
+      .header-right { display: none; }
+      .content-left {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 40px 24px;
+        border-right: none;
+      }
+      .content-right { display: none; }
+      .footer-left {
+        grid-column: 1;
+        grid-row: 3;
+        padding: 16px 24px;
+        border-right: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        height: auto;
+      }
+      .footer-right {
+        grid-column: 1;
+        grid-row: 4;
+        padding: 8px 24px 16px;
+        border-top: none;
+        justify-content: flex-start;
+      }
+      .main-heading { font-size: clamp(28px, 8vw, 48px); }
+    }
         transform: translateY(12px);
       }
       to {
