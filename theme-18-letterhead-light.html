@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var ts=localStorage.getItem("om_auth_ts");if(!ts||Date.now()-Number(ts)>=86400000){location.replace("gate.html")}})()</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Originals Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    display: grid;
+    grid-template-rows: 88px 1fr 64px;
+    min-height: 100vh;
+  }
+
+  /* ── Top Banner ── */
+  .top-banner {
+    background: #0d1e3a;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    justify-content: space-between;
+  }
+
+  .top-banner .logo-wrap {
+    background: #ffffff;
+    border-radius: 3px;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .top-banner .logo-wrap img {
+    width: 260px;
+    display: block;
+  }
+
+  .top-banner .tagline-right {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  /* ── Main Content ── */
+  .main-content {
+    background: #f6f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: rgba(13,30,58,0.2);
+    margin-bottom: 32px;
+  }
+
+  .slogan {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: #4a5a78;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  /* ── Social Icons ── */
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(26,48,96,0.3);
+    border-radius: 2px;
+    color: #1a3060;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .social-icons a:hover {
+    background: rgba(26,48,96,0.06);
+    border-color: rgba(26,48,96,0.55);
+  }
+
+  .social-icons a svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* ── Bottom Bar ── */
+  .bottom-bar {
+    background: #0d1e3a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+  }
+
+  .bottom-bar .copy {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    white-space: nowrap;
+  }
+
+  .bottom-bar .links {
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    display: flex;
+    gap: 16px;
+  }
+
+  .bottom-bar .links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .bottom-bar .links a:hover {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .bottom-bar .disclaimer {
+    font-size: 9px;
+    color: rgba(255,255,255,0.18);
+    max-width: 380px;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  /* ── fadeUp animation ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .fade-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-up:nth-child(2) { animation-delay: 0.25s; }
+  .fade-up:nth-child(3) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <header class="top-banner">
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Originals Management" />
+    </div>
+    <span class="tagline-right">Private Investment Management</span>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-inner">
+      <div class="divider-line fade-up"></div>
+      <p class="slogan fade-up">Disciplined Capital. Enduring Value.</p>
+      <div class="social-icons fade-up">
+        <!-- LinkedIn -->
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <!-- X / Twitter -->
+        <a href="#" aria-label="X">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <!-- Bloomberg -->
+        <a href="#" aria-label="Bloomberg">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+          </svg>
+        </a>
+        <!-- Email -->
+        <a href="#" aria-label="Email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Bar -->
+  <footer class="bottom-bar">
+    <span class="copy">© 2026 Originals Management</span>
+    <div class="links">
+      <a href="#">Privacy Notice</a>
+      <a href="#">Terms of Use</a>
+    </div>
+    <p class="disclaimer">For informational purposes only. Not an offer or solicitation to buy or sell any security. Past performance is not indicative of future results. All investments involve risk.</p>
+  </footer>
+
+</body>
+</html>
