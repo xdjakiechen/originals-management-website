@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var ts=localStorage.getItem("om_auth_ts");if(!ts||Date.now()-Number(ts)>=86400000){location.replace("gate.html")}})()</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Originals Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=EB+Garamond:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background: #ffffff;
+    font-family: 'Manrope', sans-serif;
+    display: grid;
+    grid-template-rows: 72px 1fr 56px;
+    min-height: 100vh;
+  }
+
+  /* Fade-up animation */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Header */
+  header {
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+
+  header img {
+    width: 180px;
+    display: block;
+  }
+
+  nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 13px;
+    color: #1a2a4a;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    transition: opacity 0.2s ease;
+  }
+
+  nav a:hover {
+    opacity: 0.6;
+  }
+
+  nav .divider {
+    margin: 0 16px;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+    user-select: none;
+  }
+
+  /* Main content */
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+  }
+
+  .main-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400;
+    color: #1a2a40;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .title-rule {
+    width: 40px;
+    height: 2px;
+    background: #1a3a6a;
+  }
+
+  /* Footer */
+  footer {
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+  }
+
+  footer .copyright {
+    font-size: 11px;
+    color: #8a9ab0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+  }
+
+  footer .legal-links {
+    font-size: 11px;
+    color: #8a9ab0;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+  }
+
+  footer .legal-links a {
+    color: #8a9ab0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  footer .legal-links a:hover {
+    color: #1a2a4a;
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Originals Management">
+    <nav>
+      <a href="#">LinkedIn</a>
+      <span class="divider">|</span>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="main-title">Alternative Investment Management</h1>
+    <div class="title-rule"></div>
+  </main>
+
+  <footer>
+    <span class="copyright">© 2026 Originals Management. All Rights Reserved.</span>
+    <span class="legal-links">
+      <a href="#">Privacy Notice</a> | <a href="#">Terms of Use</a>
+    </span>
+  </footer>
+
+</body>
+</html>
